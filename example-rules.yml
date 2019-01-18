@@ -1,0 +1,20 @@
+rules:
+  - name: Hostname
+    description: Hostname is configured according to standards.
+    pass_match:
+      - hostname (?:abc|def|hjk)\-\d{5}\-\d{2}
+
+  - name: Wifi1 Radio Channel Exclusions
+    description: Confirms wifi1 radio exclusions are applied
+    pass_match:
+      - |-
+        interface wifi1 radio channel exclude 100
+        interface wifi1 radio channel exclude 120
+        interface wifi1 radio channel exclude 124
+        interface wifi1 radio channel exclude 128
+        interface wifi1 radio channel exclude 149
+
+  - name: Smart Antenna Disabled
+    description: Confirms Smart Antenna is not enabled on profile1
+    fail_match:
+      - radio profile profile1 smart-antenna enable
